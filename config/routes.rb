@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get "pages/home"
-  get "pages/login"
+  root  'pages#home'
+  match '/login',    to: 'pages#login',    via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,20 +1,22 @@
 require 'spec_helper'
 
 describe "Pages" do
-	describe "Home page" do
 
-	  it "should have the content 'Sample App'" do
-	    visit '/pages/home'
-	    expect(page).to have_content('Micromanager')
-	  end
-	end
+  subject { page }
 
-	describe "Login Page" do
+  describe "Home page" do
+    before { visit root_path }
 
-    it "should have the content 'Help'" do
-      visit '/pages/login'
-      expect(page).to have_content('Log In')
-    end
+    it { should have_content('Micromanager') }
+    it { should have_title(full_title('')) }
+    it { should_not have_title('| Home') }
+  end
+
+  describe "Log In" do
+    before { visit login_path }
+
+    it { should have_content('Log In') }
+    it { should have_title(full_title('Log In')) }
   end
 
 end
