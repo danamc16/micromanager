@@ -45,4 +45,8 @@ module SessionsHelper
   def store_location
     session[:return_to] = request.url if request.get?
   end
+
+   def current_group=(group)
+    @current_group = group
+  end
 end
