@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713132510) do
+ActiveRecord::Schema.define(version: 20140713141929) do
+
+  create_table "groups", force: true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groups", ["title", "user_id", "created_at"], name: "index_groups_on_title_and_user_id_and_created_at"
 
   create_table "users", force: true do |t|
     t.string   "name"

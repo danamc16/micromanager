@@ -1,0 +1,7 @@
+<%= form_for(@group) do |f| %>
+  <%= render  'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :title, placeholder: "Create New Group" %>
+  </div>
+  <%= f.submit "Create" %>
+<% end %>

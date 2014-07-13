@@ -8,5 +8,11 @@ FactoryGirl.define do
     factory :admin do
       admin true
     end
+
+    factory :micropost do
+	    title "Example Title"
+	    user
+	  end
   end
+
 end

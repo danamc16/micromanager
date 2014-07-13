@@ -13,15 +13,15 @@ class UsersController < ApplicationController
 
    def show
     @user = User.find(params[:id])
+    @groups = @user.groups.paginate(page: params[:page])
   end
 
- def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      sign_in user
-      redirect_back_or user
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      flash[:success] = "Welcome to the Sample App!"
+      redirect_to @user
     else
-      flash.now[:error] = 'Invalid email/password combination'
       render 'new'
     end
   end
